@@ -8,8 +8,8 @@ TEST(ivanov_arkady_complex_number_test, correct_init_constructor) {
     const double real = 0.32, im = 42.231;
     ComplexNumber c(real, im);
 
-    EXPECT_EQ(real, c.getRe());
-    EXPECT_EQ(im, c.getIm());
+    EXPECT_DOUBLE_EQ(real, c.getRe());
+    EXPECT_DOUBLE_EQ(im, c.getIm());
 }
 
 TEST(ivanov_arkady_complex_number_test, correct_copy_constructor) {
@@ -17,8 +17,8 @@ TEST(ivanov_arkady_complex_number_test, correct_copy_constructor) {
     ComplexNumber c1(real, im);
     ComplexNumber c2(c1);
 
-    EXPECT_EQ(c1.getRe(), c2.getRe());
-    EXPECT_EQ(c1.getIm(), c2.getIm());
+    EXPECT_DOUBLE_EQ(c1.getRe(), c2.getRe());
+    EXPECT_DOUBLE_EQ(c1.getIm(), c2.getIm());
 }
 
 TEST(ivanov_arkady_complex_number_test, correct_eq_operator_1) {
@@ -45,8 +45,8 @@ TEST(ivanov_arkady_complex_number_test, correct_setters) {
     c.setRe(real);
     c.setIm(im);
 
-    EXPECT_EQ(real, c.getRe());
-    EXPECT_EQ(im, c.getIm());
+    EXPECT_DOUBLE_EQ(real, c.getRe());
+    EXPECT_DOUBLE_EQ(im, c.getIm());
 }
 
 TEST(ivanov_arkady_complex_number_test, correct_substr) {
@@ -57,8 +57,8 @@ TEST(ivanov_arkady_complex_number_test, correct_substr) {
 
     ComplexNumber c3 = c2 - c1;
 
-    EXPECT_EQ(r2 - r1, c3.getRe());
-    EXPECT_EQ(im2 - im1, c3.getIm());
+    EXPECT_DOUBLE_EQ(r2 - r1, c3.getRe());
+    EXPECT_DOUBLE_EQ(im2 - im1, c3.getIm());
 }
 
 TEST(ivanov_arkady_complex_number_test, correct_addit) {
@@ -69,8 +69,8 @@ TEST(ivanov_arkady_complex_number_test, correct_addit) {
 
     ComplexNumber c3 = c2 + c1;
 
-    EXPECT_EQ(r2 + r1, c3.getRe());
-    EXPECT_EQ(im2 + im1, c3.getIm());
+    EXPECT_DOUBLE_EQ(r2 + r1, c3.getRe());
+    EXPECT_DOUBLE_EQ(im2 + im1, c3.getIm());
 }
 
 TEST(ivanov_arkady_complex_number_test, correct_multip) {
@@ -81,6 +81,6 @@ TEST(ivanov_arkady_complex_number_test, correct_multip) {
 
     ComplexNumber c3 = c2 * c1;
 
-    EXPECT_EQ(r1 * r2 - im1 * im2, c3.getRe());
-    EXPECT_EQ(r1 * im2 + r2 * im1, c3.getIm());
+    EXPECT_DOUBLE_EQ(r1 * r2 - im1 * im2, c3.getRe());
+    EXPECT_DOUBLE_EQ(r1 * im2 + r2 * im1, c3.getIm());
 }
