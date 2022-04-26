@@ -65,3 +65,24 @@ TEST(USTIUZHANIN_NIKITA_HASHMAP_TESTS, GET_BY_NON_EXIST_KEY) {
 
     ASSERT_ANY_THROW(h["String"]);
 }
+
+TEST(USTIUZHANIN_NIKITA_HASHMAP_TESTS, DEL_THEN_ACCESS) {
+    Hashmap<string, int> h;
+    h.insert("str", 1);
+    h.erase("str");
+    ASSERT_ANY_THROW(h["str"]);
+}
+
+TEST(USTIUZHANIN_NIKITA_HASHMAP_TESTS, COPY) {
+    Hashmap<string, int> h;
+    h.insert("str", 1);
+    h.insert("string", 11);
+    Hashmap<string, int> hh;
+    ASSERT_NO_THROW(hh = h);
+}
+
+TEST(USTIUZHANIN_NIKITA_HASHMAP_TESTS, RESIZE_BY_INSERT) {
+    Hashmap<string, int> h(2);
+    h.insert("str", 1);
+    ASSERT_NO_THROW(h.insert("string", 11));
+}
