@@ -94,7 +94,8 @@ TEST(ivanov_a_set, can_union_1) {
     Set s3(s1.unionWith(s2));
     ASSERT_EQ(s3.getSize(), static_cast<size_t>(6));
     for (size_t i = 0; i < s3.getSize(); i++) {
-        ASSERT_EQ(s3.getValueAt(static_cast<size_t>(i)), i);
+        ASSERT_EQ(s3.getValueAt(static_cast<size_t>(i)),
+            static_cast<int>(i));
     }
 }
 
