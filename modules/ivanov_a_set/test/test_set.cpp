@@ -1,5 +1,6 @@
 // Copyright 2022 Ivanov Arkady
 
+#include <vector>
 #include <gtest/gtest.h>
 
 #include "include/ivanov_a_set.h"
