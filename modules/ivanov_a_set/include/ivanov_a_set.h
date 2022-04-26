@@ -16,7 +16,8 @@ class Set {
         Node() :value(0), next(nullptr), prev(nullptr) {}
         Node(int _value, Node* _next, Node* _prev) :
             value(_value), next(_next), prev(_prev) {}
-        explicit Node(const int _value) : value(_value), next(nullptr), prev(nullptr) {}
+        explicit Node(const int _value) :
+            value(_value), next(nullptr), prev(nullptr) {}
     };
 
     Set::Node* head;
