@@ -29,17 +29,17 @@ Set prepare_2() {
 
 TEST(ivanov_a_set, empty_constructor) {
     ASSERT_NO_THROW(Set());
-    ASSERT_EQ(0, Set().getSize());
+    ASSERT_EQ(static_cast<size_t>(0), Set().getSize());
 }
 
 TEST(ivanov_a_set, can_add_and_get) {
     Set s;
     for (int i = 0; i < 9; i++) {
         ASSERT_NO_THROW(s.add(i));
-        ASSERT_EQ(i + 1, s.getSize());
-        ASSERT_EQ(i, s.getValueAt(i));
+        ASSERT_EQ(static_cast<size_t>(i + 1), s.getSize());
+        ASSERT_EQ(i, s.getValueAt(static_cast<size_t>(i)));
     }
-    ASSERT_ANY_THROW(s.getValueAt(9));
+    ASSERT_ANY_THROW(s.getValueAt(static_cast<size_t>(9)));
 }
 
 TEST(ivanov_a_set, can_remove_values_1) {
@@ -48,13 +48,13 @@ TEST(ivanov_a_set, can_remove_values_1) {
     s.add(5);
     s.add(9);
 
-    ASSERT_NO_THROW(s.removeAt(1));
-    ASSERT_EQ(2, s.getSize());
-    ASSERT_EQ(1, s.getValueAt(0));
-    ASSERT_EQ(9, s.getValueAt(1));
-    ASSERT_NO_THROW(s.removeAt(1));
-    ASSERT_EQ(1, s.getSize());
-    ASSERT_EQ(1, s.getValueAt(0));
+    ASSERT_NO_THROW(s.removeAt(static_cast<size_t>(1)));
+    ASSERT_EQ(static_cast<size_t>(2), s.getSize());
+    ASSERT_EQ(1, s.getValueAt(static_cast<size_t>(0)));
+    ASSERT_EQ(9, s.getValueAt(static_cast<size_t>(1)));
+    ASSERT_NO_THROW(s.removeAt(static_cast<size_t>(1)));
+    ASSERT_EQ(static_cast<size_t>(1), s.getSize());
+    ASSERT_EQ(1, s.getValueAt(static_cast<size_t>(0)));
 }
 
 TEST(ivanov_a_set, can_remove_values_2) {
@@ -65,11 +65,11 @@ TEST(ivanov_a_set, can_remove_values_2) {
 
     ASSERT_NO_THROW(s.removeValue(5));
     ASSERT_EQ(2, s.getSize());
-    ASSERT_EQ(1, s.getValueAt(0));
-    ASSERT_EQ(9, s.getValueAt(1));
+    ASSERT_EQ(1, s.getValueAt(static_cast<size_t>(0)));
+    ASSERT_EQ(9, s.getValueAt(static_cast<size_t>(1)));
     ASSERT_NO_THROW(s.removeValue(9));
     ASSERT_EQ(1, s.getSize());
-    ASSERT_EQ(1, s.getValueAt(0));
+    ASSERT_EQ(1, s.getValueAt(static_cast<size_t>(0)));
 }
 
 TEST(ivanov_a_set, copy_constructor) {
@@ -119,8 +119,8 @@ TEST(ivanov_a_set, can_intersect_2) {
     s2.add(2);
     s2.add(3);
     Set s3(s1.intersectWith(s2));
-    ASSERT_EQ(s3.getSize(), 1);
-    ASSERT_EQ(s3.getValueAt(0), 2);
+    ASSERT_EQ(s3.getSize(), static_cast<size_t>(1));
+    ASSERT_EQ(s3.getValueAt(static_cast<size_t>(0)), 2);
 }
 
 TEST(ivanov_a_set, difference_from) {
