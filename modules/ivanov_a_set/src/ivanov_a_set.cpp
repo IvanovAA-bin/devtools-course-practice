@@ -39,9 +39,8 @@ Set::Set(const std::vector<int>& c) {
 
 Set::~Set() {
     size = 0;
-    Set::Node* ptr;
     while (head != nullptr) {
-        ptr = head;
+        Set::Node* ptr = head;
         head = head->next;
         delete ptr;
     }
