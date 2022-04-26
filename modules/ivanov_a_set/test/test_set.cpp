@@ -64,11 +64,11 @@ TEST(ivanov_a_set, can_remove_values_2) {
     s.add(9);
 
     ASSERT_NO_THROW(s.removeValue(5));
-    ASSERT_EQ(2, s.getSize());
+    ASSERT_EQ(static_cast<size_t>(2), s.getSize());
     ASSERT_EQ(1, s.getValueAt(static_cast<size_t>(0)));
     ASSERT_EQ(9, s.getValueAt(static_cast<size_t>(1)));
     ASSERT_NO_THROW(s.removeValue(9));
-    ASSERT_EQ(1, s.getSize());
+    ASSERT_EQ(static_cast<size_t>(1), s.getSize());
     ASSERT_EQ(1, s.getValueAt(static_cast<size_t>(0)));
 }
 
@@ -92,7 +92,7 @@ TEST(ivanov_a_set, can_union_1) {
         s2.add(3 + i);
     }
     Set s3(s1.unionWith(s2));
-    ASSERT_EQ(s3.getSize(), 6);
+    ASSERT_EQ(s3.getSize(), static_cast<size_t>(6));
     for (size_t i = 0; i < s3.getSize(); i++) {
         ASSERT_EQ(s3.getValueAt(i), i);
     }
