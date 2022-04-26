@@ -38,9 +38,9 @@ class Set {
     void removeValue(const int value);
 
 
-    Set unionWith(const Set& c);
-    Set intersectWith(const Set& c);
-    Set differenceFrom(const Set& c);
+    Set unionWith(const Set& c) const;
+    Set intersectWith(const Set& c) const;
+    Set differenceFrom(const Set& c) const;
 
     bool belongsTo(const Set& c) const;
     bool includes(const Set& c) const;

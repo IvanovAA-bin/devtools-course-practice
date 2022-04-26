@@ -166,7 +166,7 @@ void Set::removeValue(const int value) {
     }
 }
 
-Set Set::unionWith(const Set& c) {
+Set Set::unionWith(const Set& c) const {
     Set res;
     Set::Node* tHead = head;
     Set::Node* cHead = c.head;
@@ -197,7 +197,7 @@ Set Set::unionWith(const Set& c) {
     return res;
 }
 
-Set Set::intersectWith(const Set& c) {
+Set Set::intersectWith(const Set& c) const {
     Set res;
     Set::Node* tHead = head;
     Set::Node* cHead = c.head;
@@ -218,7 +218,7 @@ Set Set::intersectWith(const Set& c) {
     return res;
 }
 
-Set Set::differenceFrom(const Set& c) {
+Set Set::differenceFrom(const Set& c) const {
     Set res;
     Set::Node* tHead = head;
     Set::Node* cHead = c.head;
