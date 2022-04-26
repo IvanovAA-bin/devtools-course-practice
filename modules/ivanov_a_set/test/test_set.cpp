@@ -179,9 +179,3 @@ TEST(ivanov_a_set, init_constr) {
     Set s2(prepare_1());
     ASSERT_TRUE(s1 == s2);
 }
-
-TEST(ivanov_a_set, ostream_check) {
-    Set s(prepare_1());
-    ASSERT_NO_THROW(std::cout << s << std::endl);
-    std::cout << s << std::endl;
-}

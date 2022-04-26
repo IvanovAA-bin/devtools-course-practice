@@ -294,20 +294,3 @@ bool Set::strictlyIncludes(const Set& c) const {
         return false;
     return c.belongsTo(*this);
 }
-
-std::ostream& operator<< (std::ostream& o, const Set& c) {
-    o << "{";
-    size_t used = 0;
-    Set::Node* cHead = c.head;
-    while (cHead != nullptr) {
-        if (used < c.size - 1) {
-            o << cHead->value << ", ";
-        } else {
-            o << cHead->value;
-        }
-        ++used;
-        cHead = cHead->next;
-    }
-    o << "}";
-    return o;
-}

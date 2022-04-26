@@ -47,8 +47,6 @@ class Set {
     bool operator==(const Set& c) const;
     bool strictlyBelongsTo(const Set& c) const;
     bool strictlyIncludes(const Set& c) const;
-
-    friend std::ostream& operator<< (std::ostream& o, const Set& c);
 };
 
 
