@@ -8,7 +8,7 @@
 #include <vector>
 
 class Set {
-private:
+ private:
     struct Node {
         int value;
         Node* next;
@@ -16,7 +16,7 @@ private:
         Node() :value(0), next(nullptr), prev(nullptr) {}
         Node(int _value, Node* _next, Node* _prev) :
             value(_value), next(_next), prev(_prev) {}
-        Node(const int _value) : value(_value), next(nullptr), prev(nullptr) {}
+        explicit Node(const int _value) : value(_value), next(nullptr), prev(nullptr) {}
     };
 
     Set::Node* head;
@@ -24,10 +24,10 @@ private:
 
     Set::Node* nodeAt(const size_t index) const;
 
-public:
+ public:
     Set();
     Set(const Set& c);
-    Set(const std::vector<int>& c);
+    explicit Set(const std::vector<int>& c);
     ~Set();
 
     size_t getSize() const;

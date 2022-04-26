@@ -1,5 +1,6 @@
 // Copyright 2022 Ivanov Arkady
 
+#include <vector>
 #include "include/ivanov_a_set.h"
 
 Set::Set() {
@@ -81,12 +82,10 @@ void Set::add(const int value) {
                 tHead->next = newNode;
                 ++size;
                 return;
-            }
-            else {
+            } else {
                 if (value > tHead->next->value) {
                     tHead = tHead->next;
-                }
-                else if (value < tHead->next->value) {
+                } else if (value < tHead->next->value) {
                     Set::Node* newNode = new Set::Node(value);
                     Set::Node* tNext = tHead->next;
                     tHead->next = newNode;
@@ -95,21 +94,18 @@ void Set::add(const int value) {
                     newNode->next = tNext;
                     ++size;
                     return;
-                }
-                else {
+                } else {
                     throw "Value already exists in Set";
                 }
             }
-        }
-        else if (value < tHead->value) {
+        } else if (value < tHead->value) {
             Set::Node* newNode = new Set::Node(value);
             newNode->next = tHead;
             tHead->prev = newNode;
             head = newNode;
             ++size;
             return;
-        }
-        else {
+        } else {
             throw "Value already exists in Set";
         }
     }
@@ -124,14 +120,12 @@ void Set::removeAt(const size_t index) {
             next->prev = nullptr;
             delete head;
             head = next;
-        }
-        else {
+        } else {
             delete head;
             head = nullptr;
         }
         --size;
-    }
-    else {
+    } else {
         Set::Node* prevNode = delNode->prev;
         Set::Node* nextNode = delNode->next;
         delete delNode;
@@ -309,8 +303,7 @@ std::ostream& operator<< (std::ostream& o, const Set& c) {
     while (cHead != nullptr) {
         if (used < c.size - 1) {
             o << cHead->value << ", ";
-        }
-        else {
+        } else {
             o << cHead->value;
         }
         ++used;
