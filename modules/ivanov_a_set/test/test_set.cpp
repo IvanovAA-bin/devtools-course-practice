@@ -103,7 +103,9 @@ TEST(ivanov_a_set, can_union_2) {
     Set s1(prepare_1());
     Set s2(prepare_2());
     Set s3(s1.unionWith(s2));
+    Set s4(s2.unionWith(s1));
     ASSERT_EQ(s3.getSize(), s2.getSize());
+    ASSERT_EQ(s4.getSize(), s2.getSize());
 }
 
 TEST(ivanov_a_set, can_intersect_1) {
@@ -128,7 +130,9 @@ TEST(ivanov_a_set, difference_from) {
     Set s1(prepare_2());
     Set s2(prepare_1());
     Set s3(s1.differenceFrom(s2));
+    Set s4(s2.differenceFrom(s1));
     ASSERT_EQ(s3.getSize(), s1.getSize() - s2.getSize());
+    ASSERT_EQ(s4.getSize(), static_cast<size_t>(0));
 }
 
 TEST(ivanov_a_set, belongs_to) {
@@ -180,4 +184,48 @@ TEST(ivanov_a_set, init_constr) {
     Set s1(v);
     Set s2(prepare_1());
     ASSERT_TRUE(s1 == s2);
+}
+
+TEST(ivanov_a_set, throws_when_add_already_existing_value) {
+    Set s;
+    s.add(4);
+    ASSERT_ANY_THROW(s.add(4));
+    s.add(9);
+    ASSERT_ANY_THROW(s.add(9));
+}
+
+TEST(ivanov_a_set, can_remove_head_value) {
+    Set s;
+    s.add(4);
+    ASSERT_NO_THROW(s.removeAt(static_cast<size_t>(0)));
+    s.add(0);
+    s.add(1);
+    ASSERT_NO_THROW(s.removeAt(static_cast<size_t>(0)));
+}
+
+TEST(ivanov_a_set, can_remove_values_3) {
+    Set s;
+    ASSERT_NO_THROW(s.removeValue(4));
+    s.add(4);
+    ASSERT_NO_THROW(s.removeValue(3));
+    ASSERT_NO_THROW(s.removeValue(4));
+    ASSERT_NO_THROW(s.add(4));
+    s.add(5);
+    ASSERT_NO_THROW(s.removeValue(8));
+}
+
+TEST(ivanov_a_set, belongs_to_2) {
+    Set s1;
+    Set s2;
+    s1.add(4);
+    s2.add(5);
+    ASSERT_FALSE(s1.belongsTo(s2));
+}
+
+TEST(ivanov_a_set, eq_opertor_test_2) {
+    Set s1;
+    Set s2;
+    s1.add(4);
+    s2.add(5);
+    ASSERT_FALSE(s1 == s2);
 }
