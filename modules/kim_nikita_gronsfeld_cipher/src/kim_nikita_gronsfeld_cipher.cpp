@@ -6,7 +6,7 @@
 
 #include "include/kim_nikita_gronsfeld_cipher.h"
 
-int GronsfeldCipher::mod(int start, int end, int result) {
+int GronsfeldCipher::mod(int start, int end, int result) const {
   int difference = end - start;
   int result_from_start = result - start;
   int res = start + result_from_start % difference;
@@ -17,7 +17,7 @@ int GronsfeldCipher::mod(int start, int end, int result) {
 }
 
 double GronsfeldCipher::transvection(std::map<char, int> frequencies,
-  double probability[], int d, int sub_size) {
+  double probability[], int d, int sub_size) const {
   double prob = 0;
   for (char ch = 'A'; ch <= 'Z'; ch++) {
     double freq = frequencies[ch] * 1.0 / sub_size;
@@ -47,7 +47,8 @@ std::string GronsfeldCipher::getGronsfeldTable() {
   return gronsfeld_table;
 }
 
-std::string GronsfeldCipher::encode(std::string source_text, std::string key) {
+std::string GronsfeldCipher::encode(const std::string& source_text,
+    const std::string& key) const {
   std::string ciphered_text = "";
   std::string period_key = "";
 
@@ -65,8 +66,8 @@ std::string GronsfeldCipher::encode(std::string source_text, std::string key) {
   return ciphered_text;
 }
 
-std::string GronsfeldCipher::decode(
-  std::string ciphered_text, std::string key) {
+std::string GronsfeldCipher::decode(const std::string& ciphered_text,
+    const std::string& key) const{
   std::string source_text = "";
   std::string period_key = "";
 
@@ -89,7 +90,8 @@ std::string GronsfeldCipher::decode(
   return source_text;
 }
 
-std::string GronsfeldCipher::hack(std::string ciphered_text, int key_length) {
+std::string GronsfeldCipher::hack(const std::string& ciphered_text,
+    int key_length) const {
   // Table of frequency distribution of letters of the English alphabet
   double probability[] = { 0.082, 0.015, 0.028, 0.043, 0.127, 0.022, 0.02,
     0.061, 0.07, 0.002, 0.008, 0.04, 0.024, 0.067, 0.075, 0.019, 0.001, 0.06,

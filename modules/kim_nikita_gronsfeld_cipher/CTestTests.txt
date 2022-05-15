@@ -3,3 +3,98 @@
 #############################################
 
 set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_run PROPERTIES
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_can_print_empty_args
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_print_empty_args PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a Gronsfeld cipher application.\nType -help to get additional information"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_can_print_help
+    COMMAND ${APPLICATION} -help
+)
+set_tests_properties (${prefix}_can_print_help PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_detect_wrong_empty_command
+    COMMAND ${APPLICATION} qwerty
+)
+set_tests_properties (${prefix}_can_detect_wrong_empty_command PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong format of command"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_detect_wrong_number_of_args_1
+    COMMAND ${APPLICATION} encode QWERTY
+)
+set_tests_properties (${prefix}_can_detect_wrong_number_of_args_1 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number of arguments"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_can_detect_wrong_number_of_args_2
+    COMMAND ${APPLICATION} encode QWERTY 123 433
+)
+set_tests_properties (${prefix}_can_detect_wrong_number_of_args_2 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number of arguments"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_can_detect_wrong_number_of_args_3
+    COMMAND ${APPLICATION} encode QWERTY 123 433 abc
+)
+set_tests_properties (${prefix}_can_detect_wrong_number_of_args_3 PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number of arguments"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_can_encode
+    COMMAND ${APPLICATION} encode HELLO 412
+)
+set_tests_properties (${prefix}_can_encode PROPERTIES
+    PASS_REGULAR_EXPRESSION "LFNPP"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_can_decode
+    COMMAND ${APPLICATION} decode LFNPP 412
+)
+set_tests_properties (${prefix}_can_decode PROPERTIES
+    PASS_REGULAR_EXPRESSION "HELLO"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_hack
+    COMMAND ${APPLICATION} hack VHGITOPUHENFEIRJGRKUXETAFIHHKCWNVTQJCCMDWTKVJIPMKDKFKTYGNLGPQUIJ 4
+)
+set_tests_properties (${prefix}_can_hack PROPERTIES
+    PASS_REGULAR_EXPRESSION "2021"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_can_detect_wrong_hack_key
+    COMMAND ${APPLICATION} hack ABCDE abc
+)
+set_tests_properties (${prefix}_can_detect_wrong_hack_key PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong key format"
+    LABELS "${MODULE}")
+	
+add_test(
+    NAME ${prefix}_can_detect_wrong_operation_type
+    COMMAND ${APPLICATION} exit HELLO 4122
+)
+set_tests_properties (${prefix}_can_detect_wrong_operation_type PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong operation type"
+    LABELS "${MODULE}")
+	
