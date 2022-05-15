@@ -67,7 +67,7 @@ std::string GronsfeldCipher::encode(const std::string& source_text,
 }
 
 std::string GronsfeldCipher::decode(const std::string& ciphered_text,
-    const std::string& key) const{
+    const std::string& key) const {
   std::string source_text = "";
   std::string period_key = "";
 

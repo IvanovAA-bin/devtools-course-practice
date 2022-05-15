@@ -1,11 +1,13 @@
 // Copyright 2022 Ivanov Arkady
 
+#include <sstream>
+#include <string>
+
 #include "include/kim_nikita_gronsfeld_cipher.h"
 #include "include/gronsfeld_app.h"
-#include <sstream>
 
 
-std::string GronsfeldApp::operator()(int argc, const char** argv) const{
+std::string GronsfeldApp::operator()(int argc, const char** argv) const {
     std::stringstream out;
     GronsfeldCipher gc;
 
