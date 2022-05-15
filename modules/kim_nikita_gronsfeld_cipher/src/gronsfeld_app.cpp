@@ -23,7 +23,11 @@ std::string GronsfeldApp::operator()(int argc, const char** argv) const {
             out << "Use following format to use application:\n";
             out << "COMMAND | STRING\n";
             out << "Where COMMAND can be: encode, decode, hack\n";
-            out << "STRING is a non empty string";
+            out << "STRING is a non empty string\n";
+            out << "encode, decode commands has 2 arguments:"
+                " input string and key\n";
+            out << "hack command has 2 arguments: input string and key length";
+
             return out.str();
         } else {
             out << "Wrong format of command";
