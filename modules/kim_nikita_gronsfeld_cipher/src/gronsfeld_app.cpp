@@ -48,7 +48,7 @@ std::string GronsfeldApp::operator()(int argc, const char** argv) const {
         try {
             int keyLength = std::stoi(key);
             out << gc.hack(inStr, keyLength);
-        } catch (std::invalid_argument ex) {
+        } catch (std::invalid_argument& ex) {
             out << "Wrong key format";
         }
     } else {
